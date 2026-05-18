@@ -14,30 +14,12 @@ from collections import deque
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
 
-def _load_groq_api_key():
-    """Load Groq credentials from env, Streamlit secrets, .env, or the legacy .venv key file."""
-    app_dir = os.path.dirname(os.path.abspath(__file__))
-    for filename in (".env", ".venv"):
-        env_path = os.path.join(app_dir, filename)
-        if os.path.exists(env_path):
-            load_dotenv(dotenv_path=env_path, override=True)
-
-    api_key = os.getenv("GROQ_API_KEY")
-    if api_key:
-        return api_key.strip()
-
-    try:
-        return st.secrets["GROQ_API_KEY"].strip()
-    except Exception:
-        return None
 
 # ── Groq AI Client Setup ───────────────────────────────────────────────────
 try:
     from groq import Groq
-    _groq_api_key = _load_groq_api_key()
+    _groq_api_key ="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"
     groq_client = Groq(api_key=_groq_api_key) if _groq_api_key else None
 except Exception:
     groq_client = None
