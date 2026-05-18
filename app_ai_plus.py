@@ -12,7 +12,6 @@ import re
 from datetime import datetime
 from collections import deque
 import os
-from dotenv import load_dotenv
 
 
 
